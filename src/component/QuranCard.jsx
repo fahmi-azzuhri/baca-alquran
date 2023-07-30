@@ -11,19 +11,19 @@ const QuranCard = ({ surah }) => {
     <Card className="mt-3 cursor-pointer" onClick={handleCard}>
       <Card.Body>
         <Row>
-          <Col lg={1} sm={6}>
+          <Col lg={1} sm={6} className="text-center">
             <h5> {surah.nomor} </h5>
           </Col>
-          <Col lg={2} sm={6}>
+          <Col lg={2} sm={6} className="text-center">
             <h5> {surah.nama}</h5>
           </Col>
-          <Col lg={3} sm={6}>
+          <Col lg={3} sm={6} className="text-center">
             <h5> {surah.namaLatin} </h5>
           </Col>
-          <Col lg={3} sm={6}>
+          <Col lg={3} sm={6} className="text-center">
             <h5> {surah.arti} </h5>
           </Col>
-          <Col lg={3} sm={6}>
+          <Col lg={3} sm={6} className="text-center">
             <h5> {surah.jumlahAyat} ayat</h5>
           </Col>
         </Row>

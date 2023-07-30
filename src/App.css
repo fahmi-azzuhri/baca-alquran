@@ -3,3 +3,9 @@
 *{
     font-family: 'Noto Naskh Arabic', serif;
 }
+@media (max-width: 576px) {
+    .pagination {
+        flex-direction: row;
+    margin-left:270px;
+    }
+}
