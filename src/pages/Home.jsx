@@ -5,17 +5,23 @@ import QuranCard from "../component/QuranCard";
 
 const Home = () => {
   const [dataQuran, setDataQuran] = useState([]);
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_ALL_SURAH}`)
       .then((response) => {
-        console.log(response.data.data);
         setDataQuran(response.data.data);
       })
       .catch((err) => {
-        console.log("yah error", err);
+        console.log("Error occurred while fetching data", err);
       });
   }, []);
+
+  // Add a conditional check to ensure dataQuran is available before rendering
+  if (!dataQuran || dataQuran.length === 0) {
+    return <p>Loading...</p>; // You can show a loading message or spinner here
+  }
+
   return (
     <Container>
       <Row>
