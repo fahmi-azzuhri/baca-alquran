@@ -43,7 +43,10 @@ const DetailSurah = () => {
       <ul>
         {data.ayat &&
           data.ayat.map((verse) => (
-            <Card key={verse.nomorAyat} className="mt-2 py-4 px-3">
+            <Card
+              key={verse.nomorAyat}
+              className="mt-2 py-4 px-3 justify-content-center align-items-center"
+            >
               <h2 className="mb-5" style={{ textAlign: "right" }}>
                 {" "}
                 {verse.teksArab}{" "}
