@@ -3,7 +3,7 @@ import { Container, Row, Button } from "react-bootstrap";
 import axios from "axios";
 import QuranCard from "../component/QuranCard";
 
-const ITEMS_PER_PAGE = 7; // Change this value as desired
+const ITEMS_PER_PAGE = 15; // Change this value as desired
 
 const Home = () => {
   const [dataQuran, setDataQuran] = useState([]);

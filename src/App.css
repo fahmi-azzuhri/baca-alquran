@@ -6,6 +6,6 @@
 @media (max-width: 576px) {
     .pagination {
         flex-direction: row;
-    margin-left:270px;
+
     }
 }
