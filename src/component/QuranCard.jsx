@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const QuranCard = ({ surah }) => {
   const navigate = useNavigate();
   const handleCard = () => {
-    navigate("/detailsurah");
+    navigate(`/detailsurah/${surah.nomor}`);
   };
   return (
     <Card className="mt-3 cursor-pointer" onClick={handleCard}>
@@ -18,13 +18,13 @@ const QuranCard = ({ surah }) => {
             <h5> {surah.nama}</h5>
           </Col>
           <Col lg={3} sm={6}>
-            <h5> {surah.nama_latin} </h5>
+            <h5> {surah.namaLatin} </h5>
           </Col>
           <Col lg={3} sm={6}>
             <h5> {surah.arti} </h5>
           </Col>
           <Col lg={3} sm={6}>
-            <h5> {surah.jumlah_ayat} ayat</h5>
+            <h5> {surah.jumlahAyat} ayat</h5>
           </Col>
         </Row>
       </Card.Body>

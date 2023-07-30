@@ -9,8 +9,8 @@ const Home = () => {
     axios
       .get(`${process.env.REACT_APP_ALL_SURAH}`)
       .then((response) => {
-        console.log(response.data);
-        setDataQuran(response.data);
+        console.log(response.data.data);
+        setDataQuran(response.data.data);
       })
       .catch((err) => {
         console.log("yah error", err);
