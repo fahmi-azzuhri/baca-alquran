@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Button } from "react-bootstrap";
 import axios from "axios";
 import QuranCard from "../component/QuranCard";
+import NavBar from "../component/NavBar";
 
 const ITEMS_PER_PAGE = 15; // Change this value as desired
 
@@ -39,7 +40,11 @@ const Home = () => {
 
   return (
     <Container>
+      <NavBar />
       <Row>
+        <h1 className="text-center mb-3">
+          ِبِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيْم
+        </h1>
         {currentItems.map((surah) => (
           <div key={surah.nomor}>
             <QuranCard surah={surah} />

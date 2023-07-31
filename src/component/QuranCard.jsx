@@ -8,8 +8,8 @@ const QuranCard = ({ surah }) => {
     navigate(`/detailsurah/${surah.nomor}`);
   };
   return (
-    <Card className="mt-3 cursor-pointer" onClick={handleCard}>
-      <Card.Body>
+    <Card className="mt-3 cursor-pointer border-0 " onClick={handleCard}>
+      <Card.Body className="card-style">
         <Row>
           <Col lg={1} sm={6} className="text-center">
             <h5> {surah.nomor} </h5>
