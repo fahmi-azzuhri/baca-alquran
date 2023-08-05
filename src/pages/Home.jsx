@@ -9,6 +9,7 @@ const ITEMS_PER_PAGE = 15; // Change this value as desired
 const Home = () => {
   const [dataQuran, setDataQuran] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     axios
@@ -17,34 +18,44 @@ const Home = () => {
         setDataQuran(response.data.data);
       })
       .catch((err) => {
-        console.log("Error occurred while fetching data", err);
+        alert("Error occurred while fetching data", err);
       });
   }, []);
 
-  // Function to handle pagination and update current page
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  // Calculate the index of the first and last item of the current page
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+    setCurrentPage(1);
+  };
+
+  const filteredData = dataQuran.filter(
+    (surah) =>
+      surah.nama.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      surah.namaLatin.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   const lastIndex = currentPage * ITEMS_PER_PAGE;
   const firstIndex = lastIndex - ITEMS_PER_PAGE;
+  const currentItems = filteredData.slice(firstIndex, lastIndex);
 
-  // Slice the dataQuran array to get only the items for the current page
-  const currentItems = dataQuran.slice(firstIndex, lastIndex);
-
-  // Add a conditional check to ensure dataQuran is available before rendering
   if (!dataQuran || dataQuran.length === 0) {
     return <p>Loading...</p>; // You can show a loading message or spinner here
   }
 
   return (
     <Container>
-      <NavBar />
+      <NavBar
+        handleSearchChange={handleSearchChange}
+        searchQuery={searchQuery}
+      />
+
+      <Row className="mb-3">
+        <h1 className="text-center">ِبِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيْم</h1>
+      </Row>
       <Row>
-        <h1 className="text-center mb-3">
-          ِبِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيْم
-        </h1>
         {currentItems.map((surah) => (
           <div key={surah.nomor}>
             <QuranCard surah={surah} />
@@ -53,10 +64,10 @@ const Home = () => {
       </Row>
       <div>
         {/* Pagination */}
-        {dataQuran.length > ITEMS_PER_PAGE && (
+        {filteredData.length > ITEMS_PER_PAGE && (
           <ul className="pagination align-items-center justify-content-center">
             {Array.from({
-              length: Math.ceil(dataQuran.length / ITEMS_PER_PAGE),
+              length: Math.ceil(filteredData.length / ITEMS_PER_PAGE),
             }).map((_, index) => (
               <li
                 key={index}
