@@ -13,7 +13,7 @@ const NavBar = ({ handleSearchChange, searchQuery }) => {
           className="d-flex align-items-center"
         >
           <img src={logo} alt="" className="w-logo cursor-pointer me-4" />
-          <span className="name-logo">alquranQu</span>
+          <span className="name-logo">Baca Alquran</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
